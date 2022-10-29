@@ -1,23 +1,30 @@
 import { Controller, Logger } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
-import { NotifyStrategy } from './strategies/notify-strategy';
+import { EventPattern, Payload } from '@nestjs/microservices';
 import { SmsStrategy } from './strategies/sms.strategy';
 import { EmailStrategy } from './strategies/email.strategy';
 
 @Controller()
 export class NotifierController {
   private readonly logger = new Logger(NotifierController.name);
-  private notifiers: { [type: string]: NotifyStrategy } = {};
 
-  constructor() {
-    this.notifiers['email'] = new EmailStrategy();
-    this.notifiers['sms'] = new SmsStrategy();
+  constructor(
+    private readonly emailStrategy: EmailStrategy,
+    private readonly smsStrategy: SmsStrategy,
+  ) {}
+
+  @EventPattern('county_created')
+  async handleEmail(@Payload() data: { type: string; message: any }) {
+    try {
+      this.emailStrategy.send();
+    } catch (err) {
+      this.logger.error(err);
+    }
   }
 
-  @MessagePattern('notify')
-  async send(@Payload() data: { type: string; message: any }) {
+  @EventPattern('county_created')
+  async handleSms(@Payload() data: { type: string; message: any }) {
     try {
-      this.notifiers[data.type].send();
+      this.smsStrategy.send();
     } catch (err) {
       this.logger.error(err);
     }
