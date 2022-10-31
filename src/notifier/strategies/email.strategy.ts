@@ -9,14 +9,21 @@ export class EmailStrategy implements NotifyStrategy {
   constructor(private readonly emailService: EmailService) {}
 
   async send(body: string): Promise<void> {
-    this.logger.log('Sending email...');
+    const to = 'carlos@czar.dev';
 
-    await this.emailService.sendMail(
-      'carlos@czar.dev',
-      'carlos@czar.dev',
-      'hello world',
-      body,
-      `<h1>${body}</h1>`,
-    );
+    try {
+      await this.emailService.sendMail({
+        from: 'carlos@czar.dev',
+        to: to,
+        subject: 'hello world',
+        body: body,
+        body_html: `<h1>${body}</h1>`,
+      });
+
+      this.logger.log(`Email sent to ${to}`);
+    } catch (err) {
+      this.logger.error(err);
+      throw err;
+    }
   }
 }

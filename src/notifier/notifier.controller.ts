@@ -1,7 +1,8 @@
 import { Controller, Logger } from '@nestjs/common';
-import { EventPattern, Payload } from '@nestjs/microservices';
+import { Ctx, EventPattern, Payload, RmqContext } from '@nestjs/microservices';
 import { SmsStrategy } from './strategies/sms.strategy';
 import { EmailStrategy } from './strategies/email.strategy';
+import { ConfirmChannel, Message } from 'amqplib';
 
 @Controller()
 export class NotifierController {
@@ -15,9 +16,14 @@ export class NotifierController {
   @EventPattern('county_created')
   async handleEmail(
     @Payload() data: { type: string; message: { body: string } },
+    @Ctx() context: RmqContext,
   ) {
     try {
-      this.emailStrategy.send(data.message.body);
+      await this.emailStrategy.send(data.message.body);
+
+      const channel = context.getChannelRef() as ConfirmChannel;
+      const message = context.getMessage() as Message;
+      channel.ack(message);
     } catch (err) {
       this.logger.error(err);
     }
