@@ -3,7 +3,7 @@ import { NotifyStrategy } from './notify-strategy';
 
 @Injectable()
 export class SmsStrategy implements NotifyStrategy {
-  async send(): Promise<void> {
+  async send(body: string): Promise<void> {
     console.log('sending sms...');
   }
 }

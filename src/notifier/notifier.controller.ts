@@ -13,18 +13,22 @@ export class NotifierController {
   ) {}
 
   @EventPattern('county_created')
-  async handleEmail(@Payload() data: { type: string; message: any }) {
+  async handleEmail(
+    @Payload() data: { type: string; message: { body: string } },
+  ) {
     try {
-      this.emailStrategy.send();
+      this.emailStrategy.send(data.message.body);
     } catch (err) {
       this.logger.error(err);
     }
   }
 
   @EventPattern('county_created')
-  async handleSms(@Payload() data: { type: string; message: any }) {
+  async handleSms(
+    @Payload() data: { type: string; message: { body: string } },
+  ) {
     try {
-      this.smsStrategy.send();
+      this.smsStrategy.send(data.message.body);
     } catch (err) {
       this.logger.error(err);
     }

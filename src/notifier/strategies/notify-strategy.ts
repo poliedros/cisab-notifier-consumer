@@ -1,3 +1,3 @@
 export interface NotifyStrategy {
-  send(): Promise<void>;
+  send(body: string): Promise<void>;
 }
