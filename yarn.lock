@@ -367,10 +367,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@czarpoliedros/email@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@czarpoliedros/email/-/email-0.1.0.tgz#412a99dba29416b64aff818a71bc8378149bc5af"
-  integrity sha512-mmFk7XDhgbRl4J6Y9CHURzKxpXtAfTQQggKYSJq+lZ85qFdiIEKvbNOL+FwcatSKhrUMToyN1bN14ij5HHN5EA==
+"@czarpoliedros/email@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@czarpoliedros/email/-/email-0.2.2.tgz#97d6683056d6beb8d89f71c80aa3b264306e2c3f"
+  integrity sha512-Ghu6+tRYYFETx8K6RkU7DNP1aurBdeNE74MZJ2X+WfGmut1wDkfF8URiLPCue9giNwE6RhUsM1iHPeihwxexww==
   dependencies:
     "@nestjs/common" "^9.0.11"
     "@nestjs/core" "^9.0.0"
