@@ -22,7 +22,7 @@ export class NotifierController {
     @Ctx() context: RmqContext,
   ) {
     try {
-      await this.emailStrategy.send(data.message.body);
+      // await this.emailStrategy.send(data.message.body);
 
       const channel = context.getChannelRef() as ConfirmChannel;
       const message = context.getMessage() as Message;
