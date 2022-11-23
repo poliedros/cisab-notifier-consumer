@@ -38,6 +38,7 @@ export class NotifierController {
     @Ctx() context: RmqContext,
   ) {
     try {
+      this.logger.log(`trying to send email to: ${data.message.to}...`);
       await this.emailService.sendMail({
         subject: 'Cadastro Cisab',
         to: data.message.to,
