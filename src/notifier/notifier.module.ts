@@ -13,6 +13,7 @@ import { NotifierController } from './notifier.controller';
       port: Number(process.env.SMTP_PORT),
       email: process.env.SMTP_USER,
       password: process.env.SMTP_PASSWORD,
+      secure: Boolean(process.env.SMTP_SECURE),
     }),
   ],
   controllers: [NotifierController],
