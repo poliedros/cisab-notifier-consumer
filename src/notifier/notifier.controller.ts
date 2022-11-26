@@ -43,7 +43,7 @@ export class NotifierController {
         subject: 'Cadastro Cisab',
         to: data.message.to,
         body: data.message.body,
-        from: 'carlos@czar.dev',
+        from: 'undefined751@gmail.com',
         body_html: data.message.body,
       });
 
