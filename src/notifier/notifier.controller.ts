@@ -18,7 +18,7 @@ export class NotifierController {
   ) {}
 
   @EventPattern('send_email')
-  async handleManagerCreated(
+  async handleSendEmail(
     @Payload() data: ManagerCreatedRequest,
     @Ctx() context: RmqContext,
   ) {
