@@ -5,7 +5,6 @@ import { EmailStrategy } from './strategies/email.strategy';
 import { ConfirmChannel, Message } from 'amqplib';
 import { ManagerCreatedRequest } from './dto/request/manager-created-request.dto';
 import { EmailService } from '@czarpoliedros/email';
-import { ForgetPasswordRequest } from './dto/request/forget-password-request.dto';
 
 @Controller()
 export class NotifierController {
