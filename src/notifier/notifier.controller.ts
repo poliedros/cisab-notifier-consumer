@@ -5,6 +5,7 @@ import { EmailStrategy } from './strategies/email.strategy';
 import { ConfirmChannel, Message } from 'amqplib';
 import { ManagerCreatedRequest } from './dto/request/manager-created-request.dto';
 import { EmailService } from '@czarpoliedros/email';
+import { ForgetPasswordRequest } from './dto/request/forget-password-request.dto';
 
 @Controller()
 export class NotifierController {
@@ -16,23 +17,7 @@ export class NotifierController {
     private readonly emailService: EmailService,
   ) {}
 
-  @EventPattern('county_created')
-  async handleEmail(
-    @Payload() data: { type: string; message: { body: string } },
-    @Ctx() context: RmqContext,
-  ) {
-    try {
-      // await this.emailStrategy.send(data.message.body);
-
-      const channel = context.getChannelRef() as ConfirmChannel;
-      const message = context.getMessage() as Message;
-      channel.ack(message);
-    } catch (err) {
-      this.logger.error(err);
-    }
-  }
-
-  @EventPattern('manager_created')
+  @EventPattern('send_email')
   async handleManagerCreated(
     @Payload() data: ManagerCreatedRequest,
     @Ctx() context: RmqContext,
@@ -40,10 +25,10 @@ export class NotifierController {
     try {
       this.logger.log(`trying to send email to: ${data.message.to}...`);
       await this.emailService.sendMail({
-        subject: 'Cadastro Cisab',
+        subject: data.message.subject,
         to: data.message.to,
         body: data.message.body,
-        from: 'undefined751@gmail.com',
+        from: process.env.FROM_EMAIL,
         body_html: data.message.body,
       });
 
