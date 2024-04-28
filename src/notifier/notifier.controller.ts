@@ -1,20 +1,14 @@
 import { Controller, Logger } from '@nestjs/common';
 import { Ctx, EventPattern, Payload, RmqContext } from '@nestjs/microservices';
-import { SmsStrategy } from './strategies/sms.strategy';
-import { EmailStrategy } from './strategies/email.strategy';
 import { ConfirmChannel, Message } from 'amqplib';
 import { ManagerCreatedRequest } from './dto/request/manager-created-request.dto';
-import { EmailService } from '@czarpoliedros/email';
+import { EmailService } from 'src/email/email.service';
 
 @Controller()
 export class NotifierController {
   private readonly logger = new Logger(NotifierController.name);
 
-  constructor(
-    private readonly emailStrategy: EmailStrategy,
-    private readonly smsStrategy: SmsStrategy,
-    private readonly emailService: EmailService,
-  ) {}
+  constructor(private readonly emailService: EmailService) {}
 
   @EventPattern('send_email')
   async handleSendEmail(

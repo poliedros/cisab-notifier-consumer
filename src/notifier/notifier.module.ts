@@ -1,9 +1,7 @@
-import { EmailModule } from '@czarpoliedros/email';
 import { ConfigModule } from '@nestjs/config';
-import { SmsStrategy } from './strategies/sms.strategy';
-import { EmailStrategy } from './strategies/email.strategy';
 import { Module } from '@nestjs/common';
 import { NotifierController } from './notifier.controller';
+import { EmailModule } from '../email/email.module';
 
 @Module({
   imports: [
@@ -13,10 +11,10 @@ import { NotifierController } from './notifier.controller';
       port: Number(process.env.SMTP_PORT),
       email: process.env.SMTP_USER,
       password: process.env.SMTP_PASSWORD,
-      secure: Boolean(process.env.SMTP_SECURE),
+      secure: false,
     }),
   ],
   controllers: [NotifierController],
-  providers: [EmailStrategy, SmsStrategy],
+  providers: [],
 })
 export class NotifierModule {}

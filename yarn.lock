@@ -346,19 +346,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@czarpoliedros/email@^0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@czarpoliedros/email/-/email-0.2.7.tgz#e4d5802ff92889d6f34ede8a4b9f1ca8b2f068e2"
-  integrity sha512-F4xd0b1cBiFHuFCk/PCqsJf3EvcBqHno8VJuZDTZVZhJYF9Vg4bGgL+tP9BQJa41MkXELm0av37gCj2yJeYJHQ==
-  dependencies:
-    "@nestjs/common" "^9.0.11"
-    "@nestjs/core" "^9.0.0"
-    "@nestjs/platform-express" "^9.0.11"
-    nodemailer "^6.9.13"
-    reflect-metadata "^0.1.13"
-    rimraf "^3.0.2"
-    rxjs "^7.2.0"
-
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz#a23514e8fb9af1269d5f7788aa556798d61c6b59"
@@ -700,7 +687,7 @@
     webpack "5.82.1"
     webpack-node-externals "3.0.0"
 
-"@nestjs/common@^9.0.0", "@nestjs/common@^9.0.11":
+"@nestjs/common@^9.0.0":
   version "9.4.3"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-9.4.3.tgz#f907c5315b4273f7675864a05c4dda7056632b87"
   integrity sha512-Gd6D4IaYj01o14Bwv81ukidn4w3bPHCblMUq+SmUmWLyosK+XQmInCS09SbDDZyL8jy86PngtBLTdhJ2bXSUig==
@@ -739,7 +726,7 @@
     iterare "1.2.1"
     tslib "2.5.3"
 
-"@nestjs/platform-express@^9.0.0", "@nestjs/platform-express@^9.0.11":
+"@nestjs/platform-express@^9.0.0":
   version "9.4.3"
   resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-9.4.3.tgz#f61b75686bdfce566be3b54fa7bb20a4d87ed619"
   integrity sha512-FpdczWoRSC0zz2dNL9u2AQLXKXRVtq4HgHklAhbL59X0uy+mcxhlSThG7DHzDMkoSnuuHY8ojDVf7mDxk+GtCw==
