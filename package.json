@@ -21,13 +21,13 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@czarpoliedros/email": "^0.2.5",
+    "@czarpoliedros/email": "^0.2.6",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/microservices": "^9.1.6",
     "@nestjs/platform-express": "^9.0.0",
-    "amqp-connection-manager": "^4.1.9",
+    "amqp-connection-manager": "^4.1.14",
     "amqplib": "^0.10.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
